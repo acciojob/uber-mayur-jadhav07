@@ -39,10 +39,10 @@ public class AdminServiceImpl implements AdminService {
         if (adminOptional.isPresent()) {
             Admin admin = adminOptional.get();
             admin.setPassword(password);
-
-            adminRepository1.save(admin);
+            return adminRepository1.save(admin);
+        } else {
+            throw new RuntimeException("Admin with ID " + adminId + " not found!");
         }
-        throw new RuntimeException("Admin id is invalid!");
     }
 
     @Override
